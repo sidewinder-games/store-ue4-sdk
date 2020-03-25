@@ -44,6 +44,12 @@ bool UXsollaStoreLibrary::Equal_StoreCartStoreCart(const FStoreCart& A, const FS
 
 FString UXsollaStoreLibrary::FormatPrice(UObject* WorldContextObject, float Amount, const FString& Currency)
 {
+    if(Currency.IsEmpty())
+    {
+        UE_LOG(LogXsollaStore, Error, TEXT("%s: Price wasn't set for a specific item"), *VA_FUNC_LINE);
+        return FString();
+    }
+    
 	UDataTable* CurrencyLibrary = UXsollaStoreLibrary::GetStoreController(WorldContextObject)->GetCurrencyLibrary();
 	check(CurrencyLibrary);
 
