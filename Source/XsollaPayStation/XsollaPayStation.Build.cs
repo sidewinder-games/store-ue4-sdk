@@ -1,11 +1,10 @@
 // Copyright 2019 Xsolla Inc. All Rights Reserved.
-// @author Vladimir Alyamkin <ufna@ufna.ru>
 
 using UnrealBuildTool;
 
-public class XsollaLogin : ModuleRules
+public class XsollaPayStation : ModuleRules
 {
-    public XsollaLogin(ReadOnlyTargetRules Target) : base(Target)
+    public XsollaPayStation(ReadOnlyTargetRules Target) : base(Target)
     {
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
@@ -15,23 +14,21 @@ public class XsollaLogin : ModuleRules
                 "Core",
                 "HTTP",
                 "Json",
-                "JsonUtilities",
                 "UMG",
-                "OnlineSubsystem",
                 "XsollaWebBrowser"
             }
             );
-
+        
         PrivateDependencyModuleNames.AddRange(
             new string[]
             {
                 "CoreUObject",
                 "Engine",
                 "Slate",
-                "SlateCore",
+                "SlateCore"
             }
             );
 
-        PublicDefinitions.Add("WITH_XSOLLA_LOGIN=1");
+        PublicDefinitions.Add("WITH_XSOLLA_PAYSTATION=1");
     }
 }

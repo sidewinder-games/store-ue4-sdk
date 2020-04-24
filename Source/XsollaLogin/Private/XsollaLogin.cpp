@@ -41,7 +41,7 @@ void FXsollaLoginModule::StartupModule()
 
 		// Initialize module with project id provided by user
 		const UXsollaLoginSettings* Settings = FXsollaLoginModule::Get().GetSettings();
-		LoginController->Initialize(Settings->LoginProjectID);
+		LoginController->Initialize(Settings->ProjectId, Settings->LoginProjectID);
 
 		XsollaLoginControllers.Add(World, LoginController);
 
@@ -63,7 +63,7 @@ void FXsollaLoginModule::ShutdownModule()
 		// If we're in exit purge, this object has already been destroyed
 		XsollaLoginSettings->RemoveFromRoot();
 
-		for(auto LoginController : XsollaLoginControllers)
+		for (auto LoginController : XsollaLoginControllers)
 		{
 			LoginController.Value->RemoveFromRoot();
 		}
